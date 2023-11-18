@@ -14,6 +14,7 @@ public class BlackTeam_RedLeft extends LinearOpMode{
     DcMotor m_elevator;
     Servo m_pixelgrabber;
     Servo m_pixelspinner;
+    DcMotor m_intake;
 
     @Override
     public void runOpMode() {
@@ -24,6 +25,7 @@ public class BlackTeam_RedLeft extends LinearOpMode{
         m_pixelgrabber = hardwareMap.get(Servo.class, "pixelgrabber");
         m_pixelspinner = hardwareMap.get(Servo.class, "pixelspinner");
         m_elevator = hardwareMap.get(DcMotor.class,"elevator");
+        m_intake = hardwareMap.get(DcMotor.class,"intake");
 
         m_frontLeft.setDirection(DcMotor.Direction.REVERSE);
         m_rearLeft.setDirection(DcMotor.Direction.REVERSE);
@@ -38,17 +40,16 @@ public class BlackTeam_RedLeft extends LinearOpMode{
         waitForStart();
 
 
-        drive(0, -1, 0);
+        drive(0, -0.5, 0);
         sleep(1);
-        drive(1,0,0);
-        sleep(1000);
-        drive(0,-1,0);
-        sleep(200);
-        m_elevator.setPower(1);
-        sleep(1000);
-        m_pixelspinner.setPosition(1);
-        sleep(100);
-        m_pixelgrabber.setPosition(0);
+        drive(0.5,0,0);
+        sleep(3000);
+        drive(-0.5,0,0);
+        m_intake.setPower(-.5);
+        sleep(800);
+        m_intake.setPower(0);
+        drive(0.5,0,0);
+
 
 
 

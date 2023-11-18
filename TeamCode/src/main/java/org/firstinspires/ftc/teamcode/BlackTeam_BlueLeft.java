@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
-@Disabled
+
 @Autonomous(name="BlackTeam-Blue Left Auto", group="Basic")
 public class BlackTeam_BlueLeft extends LinearOpMode{
     DcMotor m_frontLeft;

@@ -25,7 +25,7 @@ public class DriveBase {
     Servo m_pixelspinner;
     boolean pixelspinnerval = true;
     boolean previousBumper = false;
-    double DS_Value = S_Distance.getDistance(DistanceUnit.INCH);
+    double DS_Value;
 
 
     public DriveBase(LinearOpMode opmode) {
