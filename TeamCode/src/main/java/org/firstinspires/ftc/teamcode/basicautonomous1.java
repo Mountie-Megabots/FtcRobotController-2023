@@ -49,7 +49,6 @@ public class basicautonomous1 extends LinearOpMode{
         drive(-0.7, 0, 0,1);
         sleep(430);
         drive(0,0,0,0.3);
-
         //drive forward
         drive(0.7, 0, 0,0.3);
         sleep(440);
