@@ -1,14 +1,14 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.Robot.DriveBase;
 
-@Autonomous(name="BlackTeam-Red Right Auto", group="Basic")
-public class BlackTeam_BaseDemo extends LinearOpMode{
+@Disabled
+@Autonomous(name="BlackTeam-Red Right Aut", group="Basic")
+public class BlackTeamBaseDemo extends LinearOpMode{
     DriveBase robot;
 
     @Override
@@ -30,7 +30,7 @@ public class BlackTeam_BaseDemo extends LinearOpMode{
         sleep(1000);
         //m_pixelspinner.setPosition(1);
         sleep(500);
-        //m_pixelgrabber.setPosition(0);
+        robot.pixgrabber_setSpot(1);
 
     }
 
