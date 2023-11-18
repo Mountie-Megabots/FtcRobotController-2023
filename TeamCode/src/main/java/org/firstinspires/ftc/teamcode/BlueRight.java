@@ -35,24 +35,24 @@ public class BlueRight extends LinearOpMode{
 
         //drive sideways
         drive(0, 0.7, 0,0.3);
-        sleep(1500);
+        sleep(1700);
         drive(0,0,0,0.3);
 
         //drive forward
         drive(0.7, 0, 0,0.3);
-        sleep(1650);
+        sleep(1800);
         drive(0,0,0,0.3);
 
         sleep(1100);
 
         //drive backwards
         drive(-0.7, 0, 0,1);
-        sleep(370);
+        sleep(500);
         drive(0,0,0,0.3);
 
         //drive forward
         drive(0.7, 0, 0,0.3);
-        sleep(400);
+        sleep(480);
         drive(0,0,0,0.3);
     }
 

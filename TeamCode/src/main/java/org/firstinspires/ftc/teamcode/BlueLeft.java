@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
-@Autonomous(name="RedLeft", group="Basic")
+@Autonomous(name="BlueLeft", group="Basic")
 public class BlueLeft extends LinearOpMode{
     DcMotor m_frontLeft;
     DcMotor m_frontRight;
@@ -41,12 +41,12 @@ public class BlueLeft extends LinearOpMode{
 
         //drive backwards
         drive(-0.7, 0, 0,1);
-        sleep(430);
+        sleep(480);
         drive(0,0,0,0.3);
 
         //drive forward
         drive(0.7, 0, 0,0.3);
-        sleep(450);
+        sleep(490);
         drive(0,0,0,0.3);
 
     }
