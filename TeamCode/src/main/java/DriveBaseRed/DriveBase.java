@@ -20,10 +20,10 @@ public class DriveBase {
         m_frontLeft = opMode.hardwareMap.get(DcMotor.class, "frontLeft");
         m_frontRight = opMode.hardwareMap.get(DcMotor.class, "frontRight");
         m_rearLeft = opMode.hardwareMap.get(DcMotor.class, "rearLeft");
-        m_rearRight =opMode.hardwareMap.get(DcMotor.class, "rearRight");
-        m_climber = opMode.hardwareMap.get(DcMotor.class,"Climber");
-        m_Servo = opMode.hardwareMap.get(Servo.class,"Servo");
-        m_airServo = opMode.hardwareMap.get(Servo.class,"airServo");
+        m_rearRight = opMode.hardwareMap.get(DcMotor.class, "rearRight");
+        m_climber = opMode.hardwareMap.get(DcMotor.class, "Climber");
+        m_Servo = opMode.hardwareMap.get(Servo.class, "Servo");
+        m_airServo = opMode.hardwareMap.get(Servo.class, "airServo");
 
         m_frontLeft.setDirection(DcMotor.Direction.REVERSE);
         m_rearLeft.setDirection(DcMotor.Direction.REVERSE);

@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 
 import DriveBaseRed.DriveBase;
 
@@ -17,6 +18,9 @@ public class RedTeleOp extends LinearOpMode{
 
 
         telemetry.addData("Status", "Initialized");
+        telemetry.addData("logofaceleft",true);
+        telemetry.addData("USBfaceup",true);
+
         telemetry.update();
 
         // Wait for the game to start (driver presses PLAY)
