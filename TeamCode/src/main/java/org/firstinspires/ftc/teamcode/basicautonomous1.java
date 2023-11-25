@@ -4,6 +4,8 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
+import DriveBaseRed.DriveBase;
+
 
 @Autonomous(name="Red Left Auto", group="Basic")
 public class basicautonomous1 extends LinearOpMode{
@@ -28,31 +30,33 @@ public class basicautonomous1 extends LinearOpMode{
 
 
         telemetry.addData("Status", "Initialized");
+        telemetry.addData("IMU", DriveBase.this.getIMU() );
         telemetry.update();
 
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
         //drive sideways
-        drive(0, -0.7, 0,0.3);
-        sleep(1700);
-        drive(0,0,0,0.3);
+
+        drive(0, -0.7, 0,0.3, (DriveBase.this.getIMU()-0)/90);
+        sleep(1700);3
+        drive(0,0,0,0.3, (DriveBase.this.getIMU()-0)/90);
 
         //drive forward
-        drive(0.7, 0, 0,0.3);
+        drive(0.7, 0, 0,0.3, (DriveBase.this.getIMU()-0)/90);
         sleep(1800);
-        drive(0,0,0,0.3);
+        drive(0,0,0,0.3, (DriveBase.this.getIMU()-0)/90);
 
         sleep(1100);
 
         //drive backwards
-        drive(-0.7, 0, 0,1);
+        drive(-0.7, 0, 0,1, (DriveBase.this.getIMU()-0)/90);
         sleep(470);
-        drive(0,0,0,0.3);
+        drive(0,0,0,0.3, (DriveBase.this.getIMU()-0)/90);
         //drive forward
-        drive(0.7, 0, 0,0.3);
+        drive(0.7, 0, 0,0.3, (DriveBase.this.getIMU()-0)/90);
         sleep(480);
-        drive(0,0,0,0.3);
+        drive(0,0,0,0.3, (DriveBase.this.getIMU()-0)/90);
         }
 
 
@@ -64,6 +68,8 @@ public class basicautonomous1 extends LinearOpMode{
         m_frontRight.setPower(y - x - rotation);
         m_rearRight.setPower(y + x - rotation);
         m_Servo.setPosition(gate);
+
+
     }
 
 }

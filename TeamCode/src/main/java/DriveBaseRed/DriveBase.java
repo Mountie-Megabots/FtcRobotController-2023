@@ -1,8 +1,13 @@
 package DriveBaseRed;
 
+import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.IMU;
+
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+
 
 public class DriveBase {
     public LinearOpMode opMode;
@@ -13,6 +18,8 @@ public class DriveBase {
     Servo m_Servo;
     Servo m_airServo;
     DcMotor m_climber;
+    IMU imu;
+
 
 
     public DriveBase(LinearOpMode opMode) {
@@ -29,8 +36,21 @@ public class DriveBase {
         m_rearLeft.setDirection(DcMotor.Direction.REVERSE);
         m_frontRight.setDirection(DcMotor.Direction.FORWARD);
         m_rearRight.setDirection(DcMotor.Direction.FORWARD);
-    }
 
+        // Retrieve the IMU from the hardware map
+        imu = opMode.hardwareMap.get(IMU.class, "imu");
+        // Adjust the orientation parameters to match your robot
+        IMU.Parameters parameters = new IMU.Parameters(new RevHubOrientationOnRobot(
+                RevHubOrientationOnRobot.LogoFacingDirection.LEFT,
+                RevHubOrientationOnRobot.UsbFacingDirection.UP));
+        // Without this, the REV Hub's orientation is assumed to be logo up / USB forward
+        imu.initialize(parameters);
+
+
+    }
+    public double getIMU() {
+        return imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES);
+    }
 
     public void drive(double y, double x, double rotation){
         m_frontLeft.setPower(y + x + rotation); // Note: pushing stick forward gives negative value
