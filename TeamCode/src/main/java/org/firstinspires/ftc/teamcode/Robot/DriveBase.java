@@ -26,7 +26,7 @@ public class DriveBase {
     boolean pixelspinnerval = true;
     boolean previousBumper = false;
     double DS_Value;
-
+    boolean gamepad2apress;
 
     public DriveBase(LinearOpMode opmode) {
         this.opMode = opmode;
@@ -66,14 +66,18 @@ public class DriveBase {
     public void intake_setPower(double x, double y){
         m_intake.setPower(x+y);
     }
-    public void pixgrabberPosition_withDS(){
-
-        if (DS_Value < 2) {
-            m_pixelgrabber.setPosition(.54);
-        }
-        else {
+    public void pixgrabberPosition_withDS(boolean gamepad2a){
+        gamepad2apress = gamepad2a;
+        if (gamepad2apress){
             m_pixelgrabber.setPosition(.4);
-
+        }
+        else if (!gamepad2apress){
+            if (DS_Value < 2) {
+                m_pixelgrabber.setPosition(.54);
+            }
+            else if (DS_Value > 2) {
+                m_pixelgrabber.setPosition(.4);
+            }
         }
     }
     public void pixgrabberPosition(boolean variable){

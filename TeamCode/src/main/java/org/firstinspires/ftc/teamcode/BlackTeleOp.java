@@ -4,23 +4,31 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.teamcode.Robot.DriveBase;
+import org.firstinspires.ftc.teamcode.Robot.DriveBaseIMU;
 
 
 @TeleOp(name="BlackTeleOp", group="Basic")
 public class BlackTeleOp extends LinearOpMode{
     DriveBase robot;
+    DriveBaseIMU robotIMU;
     boolean pixelspinnerval = true;
     boolean previousBumper = false;
+
+    DcMotorEx ElevatorEncoder;
 
 
     @Override
     public void runOpMode() {
         robot = new DriveBase(this);
+        robotIMU = new  DriveBaseIMU(this);
+
+        ElevatorEncoder = hardwareMap.get(DcMotorEx.class,"elevator" );
 
         telemetry.addData("Status", "Initialized");
         telemetry.update();
@@ -37,7 +45,6 @@ public class BlackTeleOp extends LinearOpMode{
 
 
             robot.drive(y,x,rotation);
-            robot.elevator_setPower(-gamepad2.left_stick_y);
             robot.intake_setPower(gamepad2.left_trigger, -gamepad2.right_trigger);
 
 
@@ -46,6 +53,14 @@ public class BlackTeleOp extends LinearOpMode{
 
             robot.pixspinnerToggle(gamepad1.left_bumper);
 
+            if (ElevatorEncoder.getCurrentPosition() <= 0 ){
+                    if (-gamepad2.right_stick_y == 1){
+                        robot.elevator_setPower(-gamepad2.left_stick_y);
+                    }
+            }
+            else if (ElevatorEncoder.getCurrentPosition() > 0){
+                robot.elevator_setPower(-gamepad2.left_stick_y);
+            }
 
 
         }
