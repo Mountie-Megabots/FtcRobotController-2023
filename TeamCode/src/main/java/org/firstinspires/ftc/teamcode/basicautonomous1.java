@@ -40,7 +40,9 @@ public class basicautonomous1 extends LinearOpMode{
 
 
         //drive backwards
+        //drive(-0.7, 0, 0,1);
         robot.driveWithIMU(-0.7, 0, 470);
+        //drive(0,0,0,0.3);
 
         robot.drive(0,0,0);
         //drive forward
