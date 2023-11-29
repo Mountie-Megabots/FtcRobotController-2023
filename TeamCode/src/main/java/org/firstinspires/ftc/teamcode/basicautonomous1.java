@@ -15,22 +15,15 @@ public class basicautonomous1 extends LinearOpMode{
     DcMotor m_rearRight;
     Servo m_Servo;
 
+    DriveBase robot;
+
     @Override
     public void runOpMode() {
-        m_frontLeft = hardwareMap.get(DcMotor.class, "frontLeft");
-        m_frontRight = hardwareMap.get(DcMotor.class, "frontRight");
-        m_rearLeft = hardwareMap.get(DcMotor.class, "rearLeft");
-        m_rearRight = hardwareMap.get(DcMotor.class, "rearRight");
-        m_Servo = hardwareMap.get(Servo.class,"Servo");
-
-        m_frontLeft.setDirection(DcMotor.Direction.REVERSE);
-        m_rearLeft.setDirection(DcMotor.Direction.REVERSE);
-        m_frontRight.setDirection(DcMotor.Direction.FORWARD);
-        m_rearRight.setDirection(DcMotor.Direction.FORWARD);
+        robot = new DriveBase(this);
 
 
         telemetry.addData("Status", "Initialized");
-        telemetry.addData("IMU", DriveBase.this.getIMU() );
+        telemetry.addData("IMU", robot.getIMU() );
         telemetry.update();
 
         // Wait for the game to start (driver presses PLAY)
@@ -38,38 +31,24 @@ public class basicautonomous1 extends LinearOpMode{
 
         //drive sideways
 
-        drive(0, -0.7, 0,0.3, (DriveBase.this.getIMU()-0)/90);
-        sleep(1700);3
-        drive(0,0,0,0.3, (DriveBase.this.getIMU()-0)/90);
+        robot.driveWithIMU(0, -0.7, 1700);
+        robot.driveWithIMU(0,0,0);
 
         //drive forward
-        drive(0.7, 0, 0,0.3, (DriveBase.this.getIMU()-0)/90);
-        sleep(1800);
-        drive(0,0,0,0.3, (DriveBase.this.getIMU()-0)/90);
+        robot.driveWithIMU(0.7, 0, 1800);
+        robot.driveWithIMU(0,0,1100);
 
-        sleep(1100);
 
         //drive backwards
-        drive(-0.7, 0, 0,1, (DriveBase.this.getIMU()-0)/90);
-        sleep(470);
-        drive(0,0,0,0.3, (DriveBase.this.getIMU()-0)/90);
+        robot.driveWithIMU(-0.7, 0, 470);
+
+        robot.drive(0,0,0);
         //drive forward
-        drive(0.7, 0, 0,0.3, (DriveBase.this.getIMU()-0)/90);
-        sleep(480);
-        drive(0,0,0,0.3, (DriveBase.this.getIMU()-0)/90);
+        robot.driveWithIMU(0.7, 0,480);
+
+        robot.drive(0,0,0);
         }
 
 
-
-
-    public void drive(double y, double x, double rotation, double gate){
-        m_frontLeft.setPower(y + x + rotation); // Note: pushing stick forward gives negative value
-        m_rearLeft.setPower(y - x + rotation);
-        m_frontRight.setPower(y - x - rotation);
-        m_rearRight.setPower(y + x - rotation);
-        m_Servo.setPosition(gate);
-
-
-    }
 
 }

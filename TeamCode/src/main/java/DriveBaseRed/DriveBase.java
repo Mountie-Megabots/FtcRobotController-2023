@@ -60,6 +60,16 @@ public class DriveBase {
 
     }
 
+    public void driveWithIMU(double y, double x, double delay){
+        double startTime = opMode.getRuntime();
+        double delayMS = delay/1000;
+        double startAngle = this.getIMU();
+
+        while(opMode.getRuntime() < (startTime+delayMS)){
+            this.drive(y, x, (this.getIMU()-startAngle)/90);
+        }
+    }
+
     public void setClimberPower(double power){
         m_climber.setPower(power);
     }
