@@ -19,6 +19,7 @@ public class BlackTeleOp extends LinearOpMode{
     DriveBaseIMU robotIMU;
     boolean pixelspinnerval = true;
     boolean previousBumper = false;
+    DcMotor m_DroneLauncher;
 
     DcMotorEx ElevatorEncoder;
 
@@ -29,6 +30,7 @@ public class BlackTeleOp extends LinearOpMode{
         robotIMU = new  DriveBaseIMU(this);
 
         ElevatorEncoder = hardwareMap.get(DcMotorEx.class,"elevator" );
+        m_DroneLauncher = hardwareMap.get(DcMotor.class,"Drone Launcher");
 
         telemetry.addData("Status", "Initialized");
         telemetry.update();
@@ -53,6 +55,12 @@ public class BlackTeleOp extends LinearOpMode{
 
             robot.pixspinnerToggle(gamepad1.left_bumper);
             robot.elevator_setPower(-gamepad2.left_stick_y);
+
+            if (gamepad2.right_bumper && gamepad2.a){
+                m_DroneLauncher.setPower(1);
+                sleep(2000);
+                m_DroneLauncher.setPower(0);
+            }
 
 
           /*  if (ElevatorEncoder.getCurrentPosition() <= 0 ){
