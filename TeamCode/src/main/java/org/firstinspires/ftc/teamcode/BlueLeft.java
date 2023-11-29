@@ -34,6 +34,7 @@ public class BlueLeft extends LinearOpMode{
         waitForStart();
 
 
+
         //drive forward
         drive(0.7, 0, 0,0.3);
         sleep(550);
@@ -41,12 +42,12 @@ public class BlueLeft extends LinearOpMode{
 
         //drive backwards
         drive(-0.7, 0, 0,1);
-        sleep(480);
+        sleep(470);
         drive(0,0,0,0.3);
 
         //drive forward
         drive(0.7, 0, 0,0.3);
-        sleep(490);
+        sleep(480);
         drive(0,0,0,0.3);
 
     }

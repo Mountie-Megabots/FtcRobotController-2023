@@ -4,11 +4,12 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
-
 import DriveBaseRed.DriveBase;
 
-@Autonomous(name="BlueRight", group="Basic")
-public class BlueRight extends LinearOpMode{
+
+@Autonomous(name="Red Left Long Auto", group="Basic")
+public class RedLeftLong extends LinearOpMode {
+
     DriveBase robot;
 
     @Override
@@ -17,19 +18,19 @@ public class BlueRight extends LinearOpMode{
 
 
         telemetry.addData("Status", "Initialized");
-        telemetry.addData("IMU", robot.getIMU() );
+        telemetry.addData("IMU", robot.getIMU());
         telemetry.update();
 
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-        //drive sideways to the left
-
-        robot.driveWithIMU(0, 0.7, 1700);
+        sleep(10000);
+        //drive sideways
+        robot.driveWithIMU(0,-.5,75);
         robot.driveWithIMU(0,0,0);
 
         //drive forward
-        robot.driveWithIMU(0.7, 0, 2000);
+        robot.driveWithIMU(.7, 0, 2000);
         robot.driveWithIMU(0,0,0);
 
 
@@ -42,10 +43,8 @@ public class BlueRight extends LinearOpMode{
 
         robot.drive(0,0,0);
         //drive forward
-        robot.driveWithIMU(0.7, 0,550);
+        robot.driveWithIMU(0.7, 0,600);
 
         robot.drive(0,0,0);
     }
-
-
 }

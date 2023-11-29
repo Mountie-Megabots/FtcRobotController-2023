@@ -32,7 +32,7 @@ public class RedTeleOp extends LinearOpMode{
             double x = gamepad1.left_stick_x;
             double rotation = Math.pow(gamepad1.right_stick_x,3)/1.5;
 
-            robot.drive(x,y,rotation);
+            robot.drive(y,x,rotation);
             robot.setClimberPower(gamepad2.right_stick_y);
 
             if (gamepad2.a){
