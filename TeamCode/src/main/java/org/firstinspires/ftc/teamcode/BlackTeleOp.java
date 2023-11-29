@@ -52,15 +52,17 @@ public class BlackTeleOp extends LinearOpMode{
             robot.pixgrabberPosition(gamepad2.right_bumper);
 
             robot.pixspinnerToggle(gamepad1.left_bumper);
+            robot.elevator_setPower(-gamepad2.left_stick_y);
 
-            if (ElevatorEncoder.getCurrentPosition() <= 0 ){
+
+          /*  if (ElevatorEncoder.getCurrentPosition() <= 0 ){
                     if (-gamepad2.right_stick_y == 1){
                         robot.elevator_setPower(-gamepad2.left_stick_y);
                     }
             }
             else if (ElevatorEncoder.getCurrentPosition() > 0){
                 robot.elevator_setPower(-gamepad2.left_stick_y);
-            }
+            }*/
 
 
         }

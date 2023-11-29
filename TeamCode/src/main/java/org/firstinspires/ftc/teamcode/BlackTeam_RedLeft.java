@@ -41,14 +41,15 @@ public class BlackTeam_RedLeft extends LinearOpMode{
 
 
         drive(0, -0.5, 0);
-        sleep(20);
+        sleep(100);
         drive(0.5,0,0);
-        sleep(3000);
+        sleep(3750);
         drive(-0.5,0,0);
         m_intake.setPower(-.5);
-        sleep(800);
+        sleep(900);
         m_intake.setPower(0);
         drive(0.5,0,0);
+        sleep(1000);
 
 
 
