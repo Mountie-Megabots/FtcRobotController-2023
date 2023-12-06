@@ -31,10 +31,11 @@ public class BlackTeam_BlueLeft extends LinearOpMode{
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
+        robot.driveWithIMU(0,0.5,100);
         robot.driveWithIMU(0.5, 0, 1600);
-        m_intake.setPower(-0.5);
+       // m_intake.setPower(-0.5);
         robot.driveWithIMU(-.5,0 ,1600);
-        m_intake.setPower(0);
+      //  m_intake.setPower(0);
         robot.driveWithIMU(0.5,0,1600);
         robot.driveWithIMU(0,0,0);
 

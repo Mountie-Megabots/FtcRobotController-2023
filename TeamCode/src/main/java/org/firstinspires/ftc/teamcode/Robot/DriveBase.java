@@ -44,7 +44,7 @@ public class DriveBase {
         m_rearRight = opmode.hardwareMap.get(DcMotor.class, "rearRight");
         m_pixelgrabber = opmode.hardwareMap.get(Servo.class, "pixelgrabber");
         m_pixelspinner = opmode.hardwareMap.get(Servo.class, "pixelspinner");
-        m_intake = opmode.hardwareMap.get(DcMotor.class, "intake");
+     //   m_intake = opmode.hardwareMap.get(DcMotor.class, "intake");
         m_elevator = opmode.hardwareMap.get(DcMotor.class, "elevator");
         S_Distance = opmode.hardwareMap.get(DistanceSensor.class, "Distance Sensor");
 
