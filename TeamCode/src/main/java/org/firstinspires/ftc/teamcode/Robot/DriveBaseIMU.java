@@ -15,14 +15,16 @@ public class DriveBaseIMU {
         this.opMode = opmode;
 
 
+        IMU.Parameters myIMUParameters;
+
         // Retrieve the IMU from the hardware map
         imu = opmode.hardwareMap.get(IMU.class, "imu");
         // Adjust the orientation parameters to match your robot
-        IMU.Parameters parameters = new IMU.Parameters(new RevHubOrientationOnRobot(
+        myIMUParameters= new IMU.Parameters(new RevHubOrientationOnRobot(
                 RevHubOrientationOnRobot.LogoFacingDirection.LEFT,
                 RevHubOrientationOnRobot.UsbFacingDirection.UP));
         // Without this, the REV Hub's orientation is assumed to be logo up / USB forward
-        imu.initialize(parameters);
+        imu.initialize(myIMUParameters);
 
         opMode.telemetry.addData("Orientation Value", getIMU());
 

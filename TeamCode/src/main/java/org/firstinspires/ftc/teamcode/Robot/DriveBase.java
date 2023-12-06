@@ -2,16 +2,19 @@ package org.firstinspires.ftc.teamcode.Robot;
 
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
+import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.Blinker;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
+import com.qualcomm.robotcore.hardware.IMU;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 public class DriveBase {
@@ -30,6 +33,8 @@ public class DriveBase {
     double DS_Value;
     boolean gamepad2apress;
 
+    IMU imu;
+
 
     public DriveBase(LinearOpMode opmode) {
         this.opMode = opmode;
@@ -39,10 +44,9 @@ public class DriveBase {
         m_rearRight = opmode.hardwareMap.get(DcMotor.class, "rearRight");
         m_pixelgrabber = opmode.hardwareMap.get(Servo.class, "pixelgrabber");
         m_pixelspinner = opmode.hardwareMap.get(Servo.class, "pixelspinner");
-        m_intake = opmode.hardwareMap.get(DcMotor.class,"intake");
-        m_elevator = opmode.hardwareMap.get(DcMotor.class,"elevator");
+        m_intake = opmode.hardwareMap.get(DcMotor.class, "intake");
+        m_elevator = opmode.hardwareMap.get(DcMotor.class, "elevator");
         S_Distance = opmode.hardwareMap.get(DistanceSensor.class, "Distance Sensor");
-
 
 
         m_frontLeft.setDirection(DcMotor.Direction.REVERSE);
@@ -50,9 +54,29 @@ public class DriveBase {
         m_frontRight.setDirection(DcMotor.Direction.FORWARD);
         m_rearRight.setDirection(DcMotor.Direction.FORWARD);
 
+        IMU.Parameters myIMUParameters;
 
+        // Retrieve the IMU from the hardware map
+        imu = opmode.hardwareMap.get(IMU.class, "imu");
+        // Adjust the orientation parameters to match your robot
+        myIMUParameters = new IMU.Parameters(new RevHubOrientationOnRobot(
+                RevHubOrientationOnRobot.LogoFacingDirection.LEFT,
+                RevHubOrientationOnRobot.UsbFacingDirection.UP));
+        // Without this, the REV Hub's orientation is assumed to be logo up / USB forward
+        imu.initialize(myIMUParameters);
     }
+    public void driveWithIMU(double y, double x, double delay){
+        double startTime = opMode.getRuntime();
+        double delayMS = delay/1000;
+        double startAngle = this.getIMU();
 
+        while(opMode.getRuntime() < (startTime+delayMS)){
+            this.drive(y, x, (this.getIMU()-startAngle)/90);
+        }
+    }
+    public double getIMU() {
+        return imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES);
+    }
     public void drive(double y, double x, double rotation){
         m_frontLeft.setPower(y + x + rotation); // Note: pushing stick forward gives negative value
         m_rearLeft.setPower(y - x + rotation);
