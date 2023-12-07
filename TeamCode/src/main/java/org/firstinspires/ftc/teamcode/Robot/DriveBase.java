@@ -94,14 +94,14 @@ public class DriveBase {
     }
     public void intake_setPower(boolean variable){
         if (variable){
-            m_intake.setPosition(.54);
+            m_intake.setPosition(1);
         }
         else {
             m_intake.setPosition(.3);
         }
     }
     public void intake_up(){
-        m_intake.setPosition(.54);
+        m_intake.setPosition(1);
     }
     public void intake_down(){
         m_intake.setPosition(.3);
