@@ -28,10 +28,10 @@ public class BlackTeam_RedRight extends LinearOpMode{
 
         robot.driveWithIMU(0,-.5,100);
         robot.driveWithIMU(0.5, 0, 1600);
+        robot.intake_up();
         robot.driveWithIMU(0,0 ,400);
-       // m_intake.setPower(-0.5);
         robot.driveWithIMU(-0.5,0,1600);
-       // m_intake.setPower(0);
+        robot.intake_down();
         robot.driveWithIMU(0.5,0,1600);
         robot.driveWithIMU(0,0,0);
 

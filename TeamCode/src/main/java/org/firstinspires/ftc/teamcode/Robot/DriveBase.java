@@ -24,7 +24,7 @@ public class DriveBase {
     DcMotor m_rearLeft;
     DcMotor m_rearRight;
     DcMotor m_elevator;
-    DcMotor m_intake;
+    Servo m_intake;
     DistanceSensor S_Distance;
     Servo m_pixelgrabber;
     Servo m_pixelspinner;
@@ -44,7 +44,7 @@ public class DriveBase {
         m_rearRight = opmode.hardwareMap.get(DcMotor.class, "rearRight");
         m_pixelgrabber = opmode.hardwareMap.get(Servo.class, "pixelgrabber");
         m_pixelspinner = opmode.hardwareMap.get(Servo.class, "pixelspinner");
-     //   m_intake = opmode.hardwareMap.get(DcMotor.class, "intake");
+        m_intake = opmode.hardwareMap.get(Servo.class, "intake");
         m_elevator = opmode.hardwareMap.get(DcMotor.class, "elevator");
         S_Distance = opmode.hardwareMap.get(DistanceSensor.class, "Distance Sensor");
 
@@ -92,8 +92,19 @@ public class DriveBase {
     public void pixgrabber_setSpot(double x){
         m_pixelgrabber.setPosition(x);
     }
-    public void intake_setPower(double x, double y){
-        m_intake.setPower(x+y);
+    public void intake_setPower(boolean variable){
+        if (variable){
+            m_intake.setPosition(.54);
+        }
+        else {
+            m_intake.setPosition(.3);
+        }
+    }
+    public void intake_up(){
+        m_intake.setPosition(.54);
+    }
+    public void intake_down(){
+        m_intake.setPosition(.3);
     }
     public void pixgrabberPosition_withDS(boolean gamepad2a){
         gamepad2apress = gamepad2a;

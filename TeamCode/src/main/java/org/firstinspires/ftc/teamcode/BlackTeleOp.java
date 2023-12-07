@@ -43,11 +43,15 @@ public class BlackTeleOp extends LinearOpMode{
             double y = -gamepad1.left_stick_y;// Note: pushing stick forward gives negative value
             double x = gamepad1.left_stick_x;
             double rotation = gamepad1.right_stick_x;
+            if (gamepad1.right_stick_x > 0){
+                rotation ++;
+            }
+
 
 
 
             robot.drive(y,x,rotation);
-            robot.intake_setPower(gamepad2.left_trigger, -gamepad2.right_trigger);
+            robot.intake_setPower(gamepad2.a);
 
 
 

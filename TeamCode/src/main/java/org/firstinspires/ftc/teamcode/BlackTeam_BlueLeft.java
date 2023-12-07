@@ -32,10 +32,10 @@ public class BlackTeam_BlueLeft extends LinearOpMode{
         waitForStart();
 
         robot.driveWithIMU(0,0.5,100);
+        robot.intake_up();
         robot.driveWithIMU(0.5, 0, 1600);
-       // m_intake.setPower(-0.5);
         robot.driveWithIMU(-.5,0 ,1600);
-      //  m_intake.setPower(0);
+        robot.intake_down();
         robot.driveWithIMU(0.5,0,1600);
         robot.driveWithIMU(0,0,0);
 
