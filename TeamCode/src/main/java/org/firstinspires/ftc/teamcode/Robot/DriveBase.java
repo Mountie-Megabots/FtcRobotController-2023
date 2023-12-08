@@ -26,8 +26,6 @@ public class DriveBase {
     DcMotor m_elevator;
     Servo m_intake;
     DistanceSensor S_Distance;
-    Servo m_pixelgrabber;
-    Servo m_pixelspinner;
     boolean pixelspinnerval = true;
     boolean previousBumper = false;
     double DS_Value;
@@ -42,11 +40,9 @@ public class DriveBase {
         m_frontRight = opmode.hardwareMap.get(DcMotor.class, "frontRight");
         m_rearLeft = opmode.hardwareMap.get(DcMotor.class, "rearLeft");
         m_rearRight = opmode.hardwareMap.get(DcMotor.class, "rearRight");
-        m_pixelgrabber = opmode.hardwareMap.get(Servo.class, "pixelgrabber");
-        m_pixelspinner = opmode.hardwareMap.get(Servo.class, "pixelspinner");
         m_intake = opmode.hardwareMap.get(Servo.class, "intake");
         m_elevator = opmode.hardwareMap.get(DcMotor.class, "elevator");
-        S_Distance = opmode.hardwareMap.get(DistanceSensor.class, "Distance Sensor");
+        //S_Distance = opmode.hardwareMap.get(DistanceSensor.class, "Distance Sensor");
 
 
         m_frontLeft.setDirection(DcMotor.Direction.REVERSE);
@@ -86,12 +82,12 @@ public class DriveBase {
     public void elevator_setPower(double x){
         m_elevator.setPower(x);
     }
-    public  void pixspinner_setSpot(){
+   /* public  void pixspinner_setSpot(){
         m_pixelspinner.setPosition(1);
-    }
-    public void pixgrabber_setSpot(double x){
+    }*/
+    /*public void pixgrabber_setSpot(double x){
         m_pixelgrabber.setPosition(x);
-    }
+    }*/
     public void intake_setPower(boolean variable){
         if (variable){
             m_intake.setPosition(1);
@@ -106,7 +102,7 @@ public class DriveBase {
     public void intake_down(){
         m_intake.setPosition(.3);
     }
-    public void pixgrabberPosition_withDS(boolean gamepad2a){
+    /*ublic void pixgrabberPosition_withDS(boolean gamepad2a){
         gamepad2apress = gamepad2a;
         if (gamepad2apress){
             m_pixelgrabber.setPosition(.4);
@@ -145,7 +141,7 @@ public class DriveBase {
             m_pixelspinner.setPosition(.5);
         }
 
-    }
+    }*/
 
 
 }

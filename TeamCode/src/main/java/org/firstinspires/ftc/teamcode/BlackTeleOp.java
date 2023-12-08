@@ -44,7 +44,7 @@ public class BlackTeleOp extends LinearOpMode{
             double x = gamepad1.left_stick_x;
             double rotation = gamepad1.right_stick_x;
             if (gamepad1.right_stick_x > 0){
-                rotation ++;
+                rotation += 0.5;
             }
 
 
@@ -55,9 +55,9 @@ public class BlackTeleOp extends LinearOpMode{
 
 
 
-            robot.pixgrabberPosition(gamepad2.right_bumper);
+            /*robot.pixgrabberPosition(gamepad2.right_bumper);
 
-            robot.pixspinnerToggle(gamepad1.left_bumper);
+            robot.pixspinnerToggle(gamepad1.left_bumper);*/
             robot.elevator_setPower(-gamepad2.left_stick_y);
 
             if (gamepad2.right_bumper && gamepad2.a){

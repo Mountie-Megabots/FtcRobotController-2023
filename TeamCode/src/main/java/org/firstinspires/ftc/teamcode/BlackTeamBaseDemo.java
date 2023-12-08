@@ -30,7 +30,7 @@ public class BlackTeamBaseDemo extends LinearOpMode{
         sleep(1000);
         //m_pixelspinner.setPosition(1);
         sleep(500);
-        robot.pixgrabber_setSpot(1);
+        //robot.pixgrabber_setSpot(1);
 
     }
 

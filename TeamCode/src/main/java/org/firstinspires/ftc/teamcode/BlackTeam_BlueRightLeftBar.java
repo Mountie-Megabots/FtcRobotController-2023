@@ -1,15 +1,14 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.Robot.DriveBase;
 
-@Autonomous(name="BlackTeam-Blue Right Auto", group="Basic")
-public class BlackTeam_BlueRight extends LinearOpMode {
+@Autonomous(name="BlackTeam-Blue RightLeftBar Auto", group="Basic")
+public class BlackTeam_BlueRightLeftBar extends LinearOpMode {
     DcMotor m_frontLeft;
     DcMotor m_frontRight;
     DcMotor m_rearLeft;
@@ -31,11 +30,9 @@ public class BlackTeam_BlueRight extends LinearOpMode {
         waitForStart();
 
         robot.driveWithIMU(0, 0.5, 100);
+        robot.driveWithIMU(0.3,0,7000);
         robot.intake_up();
-        robot.driveWithIMU(0.5,0,3750);
-        robot.driveWithIMU(-0.5,0,900);
-        robot.intake_down();
-        robot.driveWithIMU(0.5,0,1000);
+        robot.driveWithIMU(-0.5,0,300);
 
 
 
