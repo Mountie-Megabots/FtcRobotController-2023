@@ -8,8 +8,8 @@ import com.qualcomm.robotcore.hardware.Servo;
 import org.firstinspires.ftc.teamcode.Robot.DriveBase;
 
 
-@Autonomous(name="RedLeft_LeftBar_LeftCornerAuto", group="Basic")
-public class RedLeft_LeftBar_LeftCorner extends LinearOpMode{
+@Autonomous(name="RedLeft_MiddleBar_LeftCornerAuto", group="Basic")
+public class RedLeft_MiddleBar_LeftCorner extends LinearOpMode{
     DcMotor m_frontLeft;
     DcMotor m_frontRight;
     DcMotor m_rearLeft;
@@ -30,7 +30,11 @@ public class RedLeft_LeftBar_LeftCorner extends LinearOpMode{
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-
+        robot.driveWithIMU(0,0,10000);
+        robot.driveWithIMU(0,-0.5,2675);
+        robot.driveWithIMU(0.5,0,3950);
+        robot.intake_up();
+        robot.driveWithIMU(-0.2,0,400);
 
 
 

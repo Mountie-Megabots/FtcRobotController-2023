@@ -30,7 +30,12 @@ public class RedRight_LeftCorner extends LinearOpMode{
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-
+        robot.driveWithIMU(0,-0.5,100);
+        robot.driveWithIMU(0.4,0,1900);
+        robot.driveWithIMU(0,-0.3,5200);
+        robot.driveWithIMU(0.2,0,1500);
+        robot.intake_up();
+        robot.driveWithIMU(-0.2,0,600);
 
 
 
