@@ -29,11 +29,12 @@ public class BlueRight_MiddleBar_RightCorner extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
+        robot.intake_down();
         robot.driveWithIMU(0,0,10000);
-        robot.driveWithIMU(0,0.5,2675);
+        robot.driveWithIMU(0,0.5,2600);
         robot.driveWithIMU(0.5,0,3950);
         robot.intake_up();
-        robot.driveWithIMU(-0.2,0,400);
+        robot.driveWithIMU(-0.2,0,750);
 
 
 

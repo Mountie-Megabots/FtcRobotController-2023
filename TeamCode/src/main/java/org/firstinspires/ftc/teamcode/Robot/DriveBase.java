@@ -12,6 +12,7 @@ import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.IMU;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.VoltageSensor;
 
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
@@ -30,7 +31,7 @@ public class DriveBase {
     boolean previousBumper = false;
     double DS_Value;
     boolean gamepad2apress;
-    Voltage Sensor batteryVoltage;
+    VoltageSensor batteryVoltage;
 
     IMU imu;
 
@@ -44,7 +45,7 @@ public class DriveBase {
         m_intake = opmode.hardwareMap.get(Servo.class, "intake");
         m_elevator = opmode.hardwareMap.get(DcMotor.class, "elevator");
         //S_Distance = opmode.hardwareMap.get(DistanceSensor.class, "Distance Sensor");
-        batteryVoltage = opmode.hardwareMap.get(VoltageSensor.class, "Voltage Sensor");
+        batteryVoltage = opmode.hardwareMap.get(VoltageSensor.class, "Control Hub");
 
 
         m_frontLeft.setDirection(DcMotor.Direction.REVERSE);
@@ -68,8 +69,14 @@ public class DriveBase {
         double delayMS = delay/1000;
         double startAngle = this.getIMU();
 
+        double batX;
+        double batY;
+
+        batX = (batteryVoltage.getVoltage()/12)*x;
+        batY = (batteryVoltage.getVoltage()/12)*y;
+
         while(opMode.getRuntime() < (startTime+delayMS)){
-            this.drive(y, x, (this.getIMU()-startAngle)/90);
+            this.drive(batY, batX,  (this.getIMU()-startAngle)/90);
         }
     }
     public double getIMU() {

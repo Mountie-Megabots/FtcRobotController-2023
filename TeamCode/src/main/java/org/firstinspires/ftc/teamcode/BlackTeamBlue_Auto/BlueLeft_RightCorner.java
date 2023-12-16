@@ -29,6 +29,7 @@ public class BlueLeft_RightCorner extends LinearOpMode{
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
+        robot.intake_down();
         robot.driveWithIMU(0,0.5,100);
         robot.driveWithIMU(0.4,0,1900);
         robot.driveWithIMU(0,0.3,5200);

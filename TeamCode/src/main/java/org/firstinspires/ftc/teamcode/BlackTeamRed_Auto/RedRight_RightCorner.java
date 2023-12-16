@@ -25,6 +25,7 @@ public class RedRight_RightCorner extends LinearOpMode{
         waitForStart();
 
 
+        robot.intake_down();
         robot.driveWithIMU(0,-0.5,100);
         robot.driveWithIMU(0.2, 0, 6000);
         robot.intake_up();
