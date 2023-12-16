@@ -30,6 +30,7 @@ public class DriveBase {
     boolean previousBumper = false;
     double DS_Value;
     boolean gamepad2apress;
+    Voltage Sensor batteryVoltage;
 
     IMU imu;
 
@@ -43,6 +44,7 @@ public class DriveBase {
         m_intake = opmode.hardwareMap.get(Servo.class, "intake");
         m_elevator = opmode.hardwareMap.get(DcMotor.class, "elevator");
         //S_Distance = opmode.hardwareMap.get(DistanceSensor.class, "Distance Sensor");
+        batteryVoltage = opmode.hardwareMap.get(VoltageSensor.class, "Voltage Sensor");
 
 
         m_frontLeft.setDirection(DcMotor.Direction.REVERSE);
