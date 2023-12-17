@@ -32,9 +32,9 @@ public class RedRight_LeftCorner extends LinearOpMode{
 
         robot.intake_down();
         robot.driveWithIMU(0,-0.5,100);
-        robot.driveWithIMU(0.4,0,1800);
-        robot.driveWithIMU(0,-0.3,5200);
-        robot.driveWithIMU(0.2,0,1500);
+        robot.driveWithIMU(0.4,0,1700);
+        robot.driveWithIMU(0,-0.3,4500);
+        robot.driveWithIMU(0.2,0,1150);
         robot.intake_up();
         robot.driveWithIMU(-0.2,0,600);
 
